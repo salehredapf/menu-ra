@@ -1,36 +1,59 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8">
-    <title>Mezze Plate RA</title>
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <style>
-      body {
-        margin: 0;
-        background: #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
+<head>
+  <meta charset="UTF-8">
+  <title>Mezze Plate RA</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    body {
+      background-color: #fff;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
 
-      model-viewer {
-        width: 100%;
-        height: 100vh;
-      }
-    </style>
-  </head>
-  <body>
+    #startAR {
+      font-size: 1.5em;
+      padding: 20px 40px;
+      background-color: #000;
+      color: white;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
 
-    <model-viewer
-      src="https://cdn.jsdelivr.net/gh/salehredapf/plats-ar-test@main/mezze_plate%20(2).glb"
-      ar
-      ar-modes="scene-viewer webxr quick-look"
-      auto-rotate
-      camera-controls
-      shadow-intensity="1"
-      alt="Mezze Plate 3D">
-    </model-viewer>
+    #startAR:hover {
+      background-color: #333;
+    }
 
-  </body>
+    model-viewer {
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <model-viewer id="mezze"
+    src="https://cdn.jsdelivr.net/gh/salehredapf/plats-ar-test@main/mezze_plate%20(2).glb"
+    ar
+    ar-modes="scene-viewer webxr quick-look"
+    camera-controls
+    shadow-intensity="1"
+    autoplay>
+  </model-viewer>
+
+  <button id="startAR" onclick="document.getElementById('mezze').activateAR()">
+    📱 Voir le Mezze en Réalité Augmentée
+  </button>
+
+</body>
 </html>
